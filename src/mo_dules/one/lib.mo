@@ -1,4 +1,4 @@
-import Mem "./memory/v2";
+import Mem "./memory/v3";
 import MU "../../moup";
 
 module {
