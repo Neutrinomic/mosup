@@ -10,6 +10,8 @@ actor {
     stable let mem_one_1 : MU.MemShell<OneMem1.Mem> = { var inner = null };
 
     stable let mem_one_2 : MU.MemShell<OneMem2.Mem> = { var inner = do ? { OneMem2.patch(mem_one_1.inner!) } };
+    
+    mem_one_1.inner := null;
 
     let mod_one = One.Mod(mem_one_2);
 
