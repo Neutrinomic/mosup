@@ -1,0 +1,1 @@
+deno run --allow-read --allow-write="src/entry.mo" muop.js src/entry.mu.mo
