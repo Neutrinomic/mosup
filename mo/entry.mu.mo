@@ -1,7 +1,7 @@
 import MU_one "./mo_dules/one";
 import MU_two "./mo_dules/two";
 
-import MU "./moup";
+import MU "../src/lib";
 
 actor {
 

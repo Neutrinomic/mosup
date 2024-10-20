@@ -1,5 +1,5 @@
 import Mem "./memory/v1";
-import MU "../../moup";
+import MU "../../../src/lib";
 
 module {
 
