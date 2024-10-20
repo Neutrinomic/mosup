@@ -1,0 +1,1 @@
+deno run --allow-read --allow-write="mo/entry.mo" src/musop.js mo/entry.mu.mo
