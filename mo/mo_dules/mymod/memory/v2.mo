@@ -1,5 +1,6 @@
 import MU "../../../../src/lib";
-import V1 "./v1";
+import V2 "./v1";
+import Debug "mo:base/Debug";
 
 module {
 
@@ -7,9 +8,17 @@ module {
 
         public func new() : MU.MemShell<Mem> = MU.new({
             var counter = 0;
-            var name = "John"
+            var name = "John";
+            var age = 888;
         });
         
+        public func DefaultMem() : Mem {
+            {
+                var counter = 0;
+                var name = "John";
+                var age = 0;
+            }
+        };
 
         public type Mem = {
             var counter : Nat;
@@ -17,11 +26,14 @@ module {
         };
 
         // Module type upgrade
-        public func upgrade(from: V1.One.Mem) : Mem {
-            {
-                var counter = from.counter;
-                var name = "John";
-            }
+        public func upgrade(from: MU.MemShell<V2.One.Mem>) : MU.MemShell<Mem> {
+            MU.upgrade(from, func (a : V2.One.Mem) : Mem {
+                {
+                    var counter = a.counter;
+                    var name = "John";
+                    var age = 888;
+                }
+            });
         };
     };
 }
