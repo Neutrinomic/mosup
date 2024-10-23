@@ -8,15 +8,24 @@ module {
         var inner : ?M;
     };
 
-    public func access<A>(xmem : MemShell<A>, default: () -> A) : A {
-        if (Option.isNull(xmem.inner)) xmem.inner := ?default();
-        let ?mem = xmem.inner else Debug.trap("Unreachable");
+    public func new<Mem>(m:Mem) : MemShell<Mem> {
+        { var inner = ?m }
+    };
+
+    public func upgrade<From, To>(from:MemShell<From>, fn:From -> To) : MemShell<To> {
+        let ?f = from.inner else Debug.trap("Upgrading from non existing memory");
+        let r = { var inner = ?fn(f) };
+        clear(from);
+        r;
+    };
+
+    public func access<A>(xmem : MemShell<A>) : A {
+        let ?mem = xmem.inner else Debug.trap("Accessing uninitialized memory");
         mem;
     };
 
-    public func persistent<A>(_id: Text) : MemShell<A> { { var inner = null } };
-
-    public func placeholder() : () {
-        Debug.trap("This shouldn't be deployed, but replaced by the MOUP macro")
+    public func clear<A>(xmem : MemShell<A>) {
+        xmem.inner := null;
     };
+
 }
