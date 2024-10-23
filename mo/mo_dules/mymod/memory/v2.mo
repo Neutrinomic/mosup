@@ -12,14 +12,6 @@ module {
             var age = 888;
         });
         
-        public func DefaultMem() : Mem {
-            {
-                var counter = 0;
-                var name = "John";
-                var age = 0;
-            }
-        };
-
         public type Mem = {
             var counter : Nat;
             var name : Text;
