@@ -24,9 +24,8 @@ actor {
 
     // Custom function provided by the library iterating over all items
     HashMap.upgrade(mem_two_1, mem_two_2,
-        func(x :?(Text,Nat)) : ?(Blob,Nat8) { // What happens to each item
-            let ?a = x else return null;
-            ?(Text.encodeUtf8(a.0), Nat8.fromNat(a.1))
+        func(x :(Text,Nat)) : (Blob,Nat8) { // What happens to each item
+            (Text.encodeUtf8(x.0), Nat8.fromNat(x.1))
         }
     );
 
