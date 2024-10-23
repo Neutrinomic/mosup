@@ -28,4 +28,8 @@ module {
         xmem.inner := null;
     };
 
+    public func has_upgraded<A,B>(from:MemShell<A>, to:MemShell<B>) : Bool {
+        Option.isNull(from.inner) or not Option.isNull(to.inner);
+    };
+
 }
