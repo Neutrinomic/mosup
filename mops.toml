@@ -1,6 +1,6 @@
 [package]
 name = "mosup"
-version = "0.1.0"
+version = "0.1.1"
 description = "(MO)toko (S)table memory (UP)grade system preprocessor"
 repository = "https://github.com/Neutrinomic/mosup"
 keywords = [ ]
